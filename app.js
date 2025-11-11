@@ -279,10 +279,6 @@ function validateStep(step) {
                 return false;
             }
             
-            if (justificativa.length < 100) {
-                alert('A justificativa deve ter no mínimo 100 caracteres.');
-                return false;
-            }
             return true;
             
         case 3:
