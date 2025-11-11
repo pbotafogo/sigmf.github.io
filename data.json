@@ -1,0 +1,195 @@
+{
+  "sistema": "SIGMF - Sistema de Gestão de Movimentação Funcional",
+  "versao": "1.0",
+  "descricao": "Dados simulados de integração com SIAPE",
+  
+  "usuarios": [
+    {
+      "siape": "1234567",
+      "nome": "Maria Silva Santos",
+      "cpf": "123.456.789-00",
+      "email": "maria.santos@exemplo.gov.br",
+      "telefone": "(61) 98765-4321",
+      "cargo": "Analista Administrativo",
+      "classe": "Intermediário",
+      "padrão": "III",
+      "unidade": "Ministério da Gestão - Brasília/DF",
+      "dataAdmissao": "2015-03-10",
+      "situacao": "Ativo Permanente",
+      "perfil": "servidor"
+    },
+    {
+      "siape": "2345678",
+      "nome": "Carlos Eduardo Mendes",
+      "cpf": "234.567.890-11",
+      "email": "carlos.mendes@exemplo.gov.br",
+      "telefone": "(61) 99876-5432",
+      "cargo": "Técnico Administrativo",
+      "classe": "Intermediário",
+      "padrão": "II",
+      "unidade": "Ministério da Gestão - Brasília/DF",
+      "dataAdmissao": "2018-07-15",
+      "situacao": "Ativo Permanente",
+      "perfil": "servidor"
+    },
+    {
+      "siape": "7654321",
+      "nome": "João Pedro Oliveira",
+      "cpf": "987.654.321-00",
+      "email": "joao.oliveira@exemplo.gov.br",
+      "telefone": "(61) 98888-7777",
+      "cargo": "Coordenador de Gestão",
+      "classe": "Especialista",
+      "padrão": "IV",
+      "unidade": "Ministério da Gestão - Brasília/DF",
+      "dataAdmissao": "2010-01-20",
+      "situacao": "Ativo Permanente",
+      "perfil": "chefia"
+    },
+    {
+      "siape": "9876543",
+      "nome": "Ana Paula Costa",
+      "cpf": "456.789.123-44",
+      "email": "ana.costa@exemplo.gov.br",
+      "telefone": "(61) 99999-8888",
+      "cargo": "Gerente de Gestão de Pessoas",
+      "classe": "Especialista",
+      "padrão": "V",
+      "unidade": "Ministério da Gestão - Brasília/DF",
+      "dataAdmissao": "2008-05-12",
+      "situacao": "Ativo Permanente",
+      "perfil": "gp"
+    }
+  ],
+  
+  "unidades": [
+    {
+      "codigo": "001",
+      "nome": "Ministério da Gestão - Brasília/DF",
+      "endereco": "Esplanada dos Ministérios, Bloco K",
+      "cidade": "Brasília",
+      "uf": "DF",
+      "cep": "70040-906",
+      "telefone": "(61) 2020-1000",
+      "vagasDisponiveis": 15
+    },
+    {
+      "codigo": "002",
+      "nome": "Superintendência Regional - São Paulo/SP",
+      "endereco": "Av. Paulista, 1842",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "cep": "01310-200",
+      "telefone": "(11) 3251-3000",
+      "vagasDisponiveis": 8
+    },
+    {
+      "codigo": "003",
+      "nome": "Superintendência Regional - Rio de Janeiro/RJ",
+      "endereco": "Av. Presidente Vargas, 730",
+      "cidade": "Rio de Janeiro",
+      "uf": "RJ",
+      "cep": "20071-001",
+      "telefone": "(21) 2215-2000",
+      "vagasDisponiveis": 5
+    },
+    {
+      "codigo": "004",
+      "nome": "Superintendência Regional - Belo Horizonte/MG",
+      "endereco": "Rua da Bahia, 1148",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "cep": "30160-011",
+      "telefone": "(31) 3279-5000",
+      "vagasDisponiveis": 3
+    },
+    {
+      "codigo": "005",
+      "nome": "Superintendência Regional - Salvador/BA",
+      "endereco": "Av. Tancredo Neves, 2539",
+      "cidade": "Salvador",
+      "uf": "BA",
+      "cep": "41820-021",
+      "telefone": "(71) 3116-3000",
+      "vagasDisponiveis": 2
+    }
+  ],
+  
+  "tiposRemocao": [
+    {
+      "codigo": "interesse",
+      "nome": "Remoção a Pedido (Interesse Pessoal)",
+      "descricao": "Remoção por interesse do servidor, sem necessidade de comprovação",
+      "documentosObrigatorios": [],
+      "prazoAnalise": 30
+    },
+    {
+      "codigo": "acompanhamento",
+      "nome": "Acompanhamento de Cônjuge",
+      "descricao": "Remoção para acompanhar cônjuge ou companheiro(a)",
+      "documentosObrigatorios": [
+        "Certidão de casamento ou declaração de união estável",
+        "Comprovante de lotação do cônjuge"
+      ],
+      "prazoAnalise": 20
+    },
+    {
+      "codigo": "saude",
+      "nome": "Motivo de Saúde",
+      "descricao": "Remoção por necessidade de tratamento de saúde próprio ou de dependente",
+      "documentosObrigatorios": [
+        "Laudo médico",
+        "Relatório médico detalhado"
+      ],
+      "prazoAnalise": 15
+    },
+    {
+      "codigo": "outro",
+      "nome": "Outro",
+      "descricao": "Outros motivos devidamente justificados",
+      "documentosObrigatorios": [],
+      "prazoAnalise": 30
+    }
+  ],
+  
+  "fluxoProcesso": {
+    "etapas": [
+      {
+        "ordem": 1,
+        "nome": "Solicitação",
+        "responsavel": "Servidor",
+        "prazo": 0,
+        "descricao": "Servidor preenche formulário e submete solicitação"
+      },
+      {
+        "ordem": 2,
+        "nome": "Análise da Chefia",
+        "responsavel": "Chefia Imediata",
+        "prazo": 10,
+        "descricao": "Chefia analisa e emite parecer sobre a solicitação"
+      },
+      {
+        "ordem": 3,
+        "nome": "Análise da GP",
+        "responsavel": "Gestão de Pessoas",
+        "prazo": 15,
+        "descricao": "GP verifica requisitos e emite decisão final"
+      },
+      {
+        "ordem": 4,
+        "nome": "Publicação",
+        "responsavel": "Gestão de Pessoas",
+        "prazo": 5,
+        "descricao": "Publicação da portaria de remoção"
+      }
+    ]
+  },
+  
+  "configuracoes": {
+    "prazoMaximoAnalise": 30,
+    "tamanhoMaximoArquivo": 5242880,
+    "formatosAceitos": [".pdf", ".doc", ".docx"],
+    "notificacoesEmail": true,
+    "aprovaAutomatica": false
+  }
+}

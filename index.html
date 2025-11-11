@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGMF - Sistema de Gestão de Movimentação Funcional</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela de Login -->
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="logo-placeholder">
+                    <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="120" height="60" rx="4" fill="white" fill-opacity="0.2"/>
+                        <text x="60" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">GOV.BR</text>
+                    </svg>
+                </div>
+                <h1>SIGMF</h1>
+                <p class="subtitle">Sistema de Gestão de Movimentação Funcional</p>
+            </div>
+            <div class="login-card">
+                <h2>Acesso ao Sistema</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="siape">SIAPE</label>
+                        <input type="text" id="siape" placeholder="Digite seu SIAPE (use: 1234567)" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="Digite sua senha (use: 1234567)" required>
+                    </div>
+                    <div class="role-selector">
+                        <label>Perfil de Acesso:</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="role" value="servidor" checked>
+                                Servidor
+                            </label>
+                            <label>
+                                <input type="radio" name="role" value="chefia">
+                                Chefia
+                            </label>
+                            <label>
+                                <input type="radio" name="role" value="gp">
+                                Gestão de Pessoas
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Painel do Servidor -->
+    <div id="servidor-screen" class="screen">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo-small-placeholder">📋</div>
+                    <h1>SIGMF</h1>
+                </div>
+                <div class="header-right">
+                    <span class="user-info" id="user-name"></span>
+                    <button class="btn btn-secondary" onclick="logout()">Sair</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="page-header">
+                <h2>Minhas Solicitações de Remoção</h2>
+                <button class="btn btn-primary" onclick="showFormulario()">
+                    <span class="icon">+</span> Nova Solicitação
+                </button>
+            </div>
+
+            <div class="solicitacoes-list" id="servidor-solicitacoes">
+                <div class="empty-state">
+                    <p>Você ainda não possui solicitações de remoção.</p>
+                    <p>Clique em "Nova Solicitação" para começar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulário Multi-Step -->
+    <div id="formulario-screen" class="screen">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo-small-placeholder">📋</div>
+                    <h1>SIGMF</h1>
+                </div>
+                <div class="header-right">
+                    <span class="user-info" id="user-name-form"></span>
+                    <button class="btn btn-secondary" onclick="cancelarFormulario()">Cancelar</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="form-wizard">
+                <div class="wizard-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Dados Pessoais</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Motivo da Remoção</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Documentos</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Confirmação</div>
+                    </div>
+                </div>
+
+                <form id="remocao-form">
+                    <!-- Passo 1: Dados Pessoais -->
+                    <div class="form-step active" data-step="1">
+                        <h3>Dados Pessoais</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="siape-form">SIAPE</label>
+                                <input type="text" id="siape-form" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cargo">Cargo</label>
+                                <input type="text" id="cargo" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="unidade-atual">Unidade Atual</label>
+                                <input type="text" id="unidade-atual" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Passo 2: Motivo da Remoção -->
+                    <div class="form-step" data-step="2">
+                        <h3>Motivo da Remoção</h3>
+                        <div class="form-group">
+                            <label for="tipo-remocao">Tipo de Remoção</label>
+                            <select id="tipo-remocao" required>
+                                <option value="">Selecione...</option>
+                                <option value="interesse">Remoção a Pedido (Interesse Pessoal)</option>
+                                <option value="acompanhamento">Acompanhamento de Cônjuge</option>
+                                <option value="saude">Motivo de Saúde</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="unidade-destino">Unidade de Destino</label>
+                            <select id="unidade-destino" required>
+                                <option value="">Selecione...</option>
+                                <option value="Brasília - DF">Brasília - DF</option>
+                                <option value="São Paulo - SP">São Paulo - SP</option>
+                                <option value="Rio de Janeiro - RJ">Rio de Janeiro - RJ</option>
+                                <option value="Belo Horizonte - MG">Belo Horizonte - MG</option>
+                                <option value="Salvador - BA">Salvador - BA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="justificativa">Justificativa</label>
+                            <textarea id="justificativa" rows="6" placeholder="Descreva detalhadamente os motivos da sua solicitação..." required></textarea>
+                            <small>Mínimo 100 caracteres</small>
+                        </div>
+                    </div>
+
+                    <!-- Passo 3: Documentos -->
+                    <div class="form-step" data-step="3">
+                        <h3>Documentos Anexos</h3>
+                        <p class="info-text">Anexe os documentos que comprovem sua solicitação (opcional, mas recomendado)</p>
+                        
+                        <div class="upload-area" id="upload-area">
+                            <div class="upload-icon">📎</div>
+                            <p>Arraste arquivos aqui ou clique para selecionar</p>
+                            <small>PDF, DOC, DOCX - Máximo 5MB por arquivo</small>
+                            <input type="file" id="file-input" multiple accept=".pdf,.doc,.docx" hidden>
+                        </div>
+
+                        <div class="files-list" id="files-list"></div>
+                    </div>
+
+                    <!-- Passo 4: Confirmação -->
+                    <div class="form-step" data-step="4">
+                        <h3>Confirmação da Solicitação</h3>
+                        <div class="summary-card">
+                            <h4>Resumo da Solicitação</h4>
+                            <div class="summary-item">
+                                <strong>Nome:</strong>
+                                <span id="confirm-nome"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>SIAPE:</strong>
+                                <span id="confirm-siape"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>Tipo de Remoção:</strong>
+                                <span id="confirm-tipo"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>Unidade Atual:</strong>
+                                <span id="confirm-unidade-atual"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>Unidade de Destino:</strong>
+                                <span id="confirm-unidade-destino"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>Justificativa:</strong>
+                                <span id="confirm-justificativa"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>Documentos Anexados:</strong>
+                                <span id="confirm-documentos"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="confirma-dados" required>
+                                Declaro que as informações fornecidas são verdadeiras
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="previousStep()" id="btn-previous">
+                            Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()" id="btn-next">
+                            Próximo
+                        </button>
+                        <button type="submit" class="btn btn-success" id="btn-submit" style="display: none;">
+                            Enviar Solicitação
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Painel da Chefia -->
+    <div id="chefia-screen" class="screen">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo-small-placeholder">📋</div>
+                    <h1>SIGMF - Painel da Chefia</h1>
+                </div>
+                <div class="header-right">
+                    <span class="user-info" id="user-name-chefia"></span>
+                    <button class="btn btn-secondary" onclick="logout()">Sair</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="page-header">
+                <h2>Solicitações Pendentes de Análise</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="todas">Todas</button>
+                    <button class="filter-btn" data-filter="pendentes">Pendentes</button>
+                    <button class="filter-btn" data-filter="aprovadas">Aprovadas</button>
+                    <button class="filter-btn" data-filter="rejeitadas">Rejeitadas</button>
+                </div>
+            </div>
+
+            <div class="solicitacoes-list" id="chefia-solicitacoes"></div>
+        </div>
+    </div>
+
+    <!-- Painel da Gestão de Pessoas -->
+    <div id="gp-screen" class="screen">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo-small-placeholder">📋</div>
+                    <h1>SIGMF - Gestão de Pessoas</h1>
+                </div>
+                <div class="header-right">
+                    <span class="user-info" id="user-name-gp"></span>
+                    <button class="btn btn-secondary" onclick="logout()">Sair</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="page-header">
+                <h2>Processos de Remoção</h2>
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-total">0</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-pendentes">0</div>
+                        <div class="stat-label">Pendentes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-aprovadas">0</div>
+                        <div class="stat-label">Aprovadas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-rejeitadas">0</div>
+                        <div class="stat-label">Indeferidas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solicitacoes-list" id="gp-solicitacoes"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes da Solicitação -->
+    <div id="modal-detalhes" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalhes da Solicitação</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body-content"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Manifestação -->
+    <div id="modal-manifestacao" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="manifestacao-title">Manifestação</h3>
+                <button class="close-btn" onclick="closeManifestacaoModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="manifestacao-form">
+                    <div class="form-group">
+                        <label for="parecer">Parecer</label>
+                        <textarea id="parecer" rows="5" placeholder="Digite seu parecer sobre a solicitação..." required></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeManifestacaoModal()">Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="submitManifestacao('rejeitado')">Rejeitar</button>
+                        <button type="button" class="btn btn-success" onclick="submitManifestacao('aprovado')">Aprovar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Modal -->
+    <div id="modal-timeline" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Linha do Tempo - Protocolo <span id="timeline-protocolo"></span></h3>
+                <button class="close-btn" onclick="closeTimelineModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="timeline" id="timeline-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
