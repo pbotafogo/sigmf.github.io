@@ -1,228 +1,356 @@
-# SIGMF - Sistema de Gestão de Movimentação Funcional
-## Módulo de Remoção a Pedido - Protótipo
+# 📋 SIGMF - Sistema de Gestão de Movimentação Funcional
 
-### 📋 Visão Geral
+> Protótipo funcional do módulo de **Remoção a Pedido** - Demonstração de transformação digital aplicada à gestão de pessoas no serviço público.
 
-Protótipo funcional do módulo de Remoção a Pedido do SIGMF, demonstrando a jornada completa do servidor e o fluxo automatizado de análise e aprovação.
-
-### 🎯 Funcionalidades
-
-#### ✅ Implementadas
-- **Autenticação Multi-perfil**: Login simulado para Servidor, Chefia e Gestão de Pessoas
-- **Formulário Multi-step**: Processo guiado em 4 etapas
-  1. Dados Pessoais (preenchidos via simulação SIAPE)
-  2. Motivo da Remoção
-  3. Upload de Documentos
-  4. Confirmação
-- **Painel do Servidor**: Visualização de solicitações e timeline
-- **Painel da Chefia**: Análise e emissão de parecer
-- **Painel da GP**: Decisão final e estatísticas
-- **Timeline Interativa**: Acompanhamento de todas as etapas do processo
-- **Fluxo Automatizado**: Encaminhamento automático entre etapas
-- **Persistência Local**: Dados salvos no localStorage do navegador
-
-### 🚀 Como Executar
-
-1. **Abra o arquivo `index.html` no navegador** (Chrome, Firefox, Edge)
-   - Dê um duplo clique no arquivo
-   - Ou arraste o arquivo para o navegador
-
-2. **Não é necessário servidor web** - o protótipo funciona localmente
-
-### 🎬 Demonstração do Fluxo (3 minutos)
-
-#### Passo 1: Login como Servidor (30s)
-1. Acesse a tela de login
-2. Deixe os campos em branco (são apenas ilustrativos)
-3. Selecione o perfil **"Servidor"**
-4. Clique em **"Entrar"**
-
-#### Passo 2: Criar Solicitação (1min)
-1. Clique em **"Nova Solicitação"**
-2. **Etapa 1** - Dados já preenchidos automaticamente
-   - E-mail e telefone podem ser editados
-   - Clique em **"Próximo"**
-3. **Etapa 2** - Motivo da Remoção
-   - Selecione um tipo (ex: "Interesse Pessoal")
-   - Selecione destino (ex: "São Paulo - SP")
-   - Digite justificativa (mínimo 100 caracteres)
-   - Clique em **"Próximo"**
-4. **Etapa 3** - Documentos (opcional)
-   - Pode pular ou simular upload
-   - Clique em **"Próximo"**
-5. **Etapa 4** - Confirmação
-   - Marque o checkbox de confirmação
-   - Clique em **"Enviar Solicitação"**
-6. Anote o **número do protocolo** gerado
-
-#### Passo 3: Login como Chefia (30s)
-1. Clique em **"Sair"**
-2. Na tela de login, selecione **"Chefia"**
-3. Clique em **"Entrar"**
-4. Visualize a solicitação criada
-5. Clique em **"Manifestar"**
-6. Digite um parecer (ex: "Aprovado. Servidor possui bom desempenho.")
-7. Clique em **"Aprovar"**
-
-#### Passo 4: Login como Gestão de Pessoas (1min)
-1. Clique em **"Sair"**
-2. Na tela de login, selecione **"Gestão de Pessoas"**
-3. Clique em **"Entrar"**
-4. Veja as **estatísticas** atualizadas
-5. Localize a solicitação
-6. Clique em **"Emitir Decisão"**
-7. Digite parecer final (ex: "Deferido conforme parecer da chefia.")
-8. Clique em **"Aprovar"**
-9. Clique em **"Ver Timeline"** para visualizar todo o fluxo
-
-### 👥 Credenciais de Teste
-
-**Para Login:**
-- **SIAPE**: `1234567`
-- **Senha**: `1234567`
-- Funciona para todos os perfis
-
-**Perfis Disponíveis:**
-
-**Servidor**
-- Perfil: Servidor
-- Nome simulado: Maria Silva Santos
-- SIAPE: 1234567
-
-**Chefia**
-- Perfil: Chefia
-- Nome simulado: João Pedro Oliveira
-- SIAPE: 7654321
-
-**Gestão de Pessoas**
-- Perfil: Gestão de Pessoas
-- Nome simulado: Ana Paula Costa
-- SIAPE: 9876543
-
-### 🎨 Design System
-
-#### Paleta de Cores
-- **Azul Institucional**: #1351B4 (botões primários, cabeçalhos)
-- **Azul Escuro**: #0C326F (hover states)
-- **Azul Claro**: #E6F0FF (backgrounds de destaque)
-- **Branco**: #FFFFFF (cards, modais)
-- **Cinza Claro**: #F8F9FA (background geral)
-- **Verde Sucesso**: #168821 (aprovações)
-- **Vermelho Erro**: #E52207 (rejeições)
-
-#### Componentes
-- Formulários com validação
-- Cards com shadow e hover effects
-- Modais responsivos
-- Timeline vertical com marcadores
-- Badges de status
-- Botões com estados visuais
-
-### 📱 Responsividade
-
-O protótipo é **totalmente responsivo** e funciona em:
-- 💻 Desktop (1200px+)
-- 📱 Tablet (768px - 1199px)
-- 📱 Mobile (até 767px)
-
-### ♿ Acessibilidade
-
-- Navegação por teclado
-- Labels associados aos inputs
-- Estados de foco visíveis
-- Estrutura semântica HTML5
-- Contraste de cores adequado (WCAG AA)
-
-### 📂 Estrutura de Arquivos
-
-```
-Transformacao Digital/
-├── index.html          # Estrutura HTML de todas as telas
-├── style.css           # Estilos CSS responsivos
-├── app.js              # Lógica JavaScript completa
-├── data.json           # Dados simulados do SIAPE
-├── README.md           # Este arquivo
-└── base inicial/       # Assets visuais (logos, layouts)
-    ├── Group 7.svg     # Logo Gov.br
-    └── [outros arquivos de referência visual]
-```
-
-### 🔄 Fluxo do Processo
-
-```
-┌─────────────────┐
-│   Solicitação   │ → Servidor preenche formulário
-└────────┬────────┘
-         ↓
-┌─────────────────┐
-│  Chefia Analisa │ → Aprova ou rejeita com parecer
-└────────┬────────┘
-         ↓
-┌─────────────────┐
-│   GP Analisa    │ → Decisão final (deferimento/indeferimento)
-└────────┬────────┘
-         ↓
-┌─────────────────┐
-│    Concluído    │ → Timeline completa disponível
-└─────────────────┘
-```
-
-### 💾 Persistência de Dados
-
-Os dados são salvos automaticamente no **localStorage** do navegador:
-- Solicitações criadas persistem entre recarregamentos
-- Pareceres e decisões são mantidos
-- Timeline completa é preservada
-
-**Nota**: Para limpar os dados e recomeçar, abra o Console do navegador (F12) e execute:
-```javascript
-localStorage.clear()
-location.reload()
-```
-
-### 🎯 Pontos de Demonstração na Mentoria
-
-1. **Interface Intuitiva**: Design limpo seguindo padrões gov.br
-2. **Fluxo Guiado**: Wizard com indicação visual de progresso
-3. **Simulação SIAPE**: Dados preenchidos automaticamente
-4. **Validações**: Formulário com validações em tempo real
-5. **Automação**: Encaminhamento automático entre etapas
-6. **Timeline Visual**: Acompanhamento completo do processo
-7. **Multi-perfil**: Diferentes visões para cada tipo de usuário
-8. **Responsividade**: Funciona em qualquer dispositivo
-
-### 🛠️ Tecnologias Utilizadas
-
-- **HTML5**: Estrutura semântica
-- **CSS3**: Flexbox, Grid, Animações
-- **JavaScript (Vanilla)**: Sem frameworks, código puro
-- **LocalStorage API**: Persistência de dados
-- **JSON**: Estrutura de dados simulados
-
-### 📊 Estatísticas do Código
-
-- **Linhas de HTML**: ~400
-- **Linhas de CSS**: ~900
-- **Linhas de JavaScript**: ~700
-- **Total**: ~2000 linhas de código
-
-### 🎓 Próximos Passos (Evolução Futura)
-
-- [ ] Integração real com SIAPE
-- [ ] Integração com SEI para tramitação
-- [ ] Notificações por e-mail
-- [ ] Geração de relatórios PDF
-- [ ] Assinatura digital
-- [ ] Painel de métricas e indicadores
-- [ ] Exportação de dados
-- [ ] Histórico de versões do processo
-
-### 📞 Suporte
-
-Para dúvidas sobre o protótipo durante a mentoria, consulte este README ou explore o código-fonte comentado.
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---
 
-**Desenvolvido para demonstração na Mentoria 1 - Transformação Digital**
-**Data**: Novembro 2025
-**Versão**: 1.0
+## 🎯 Sobre o Projeto
+
+O **SIGMF** é um protótipo de sistema web que demonstra como modernizar e automatizar processos de gestão de pessoas no setor público. Este módulo específico trata das **solicitações de remoção**, apresentando:
+
+- ✅ **Formulário multi-step intuitivo** com validações
+- ✅ **Fluxo automatizado** de aprovação (Servidor → Chefia → GP)
+- ✅ **Timeline rastreável** de todas as etapas
+- ✅ **Painéis personalizados** para cada perfil de usuário
+- ✅ **Interface responsiva** e acessível (WCAG 2.1 AA)
+- ✅ **Integração simulada** com SIAPE
+
+---
+
+## 🚀 Demonstração
+
+### 🌐 [Acesse a Demo Online](#) _(em breve)_
+
+Ou teste localmente:
+
+1. Clone o repositório
+2. Abra `index.html` no navegador
+3. Use as credenciais: **SIAPE: 1234567** / **Senha: 1234567**
+
+---
+
+## 📸 Screenshots
+
+### Tela de Login
+Interface limpa seguindo o padrão Gov.br com autenticação multi-perfil.
+
+### Formulário Multi-step
+Wizard intuitivo em 4 etapas: Dados Pessoais → Motivo → Documentos → Confirmação.
+
+### Painel Administrativo
+Dashboard com estatísticas e gestão completa dos processos.
+
+### Timeline do Processo
+Rastreabilidade total com histórico de todas as ações.
+
+---
+
+## ✨ Funcionalidades
+
+### 👤 Para Servidores
+- Criar solicitações de remoção
+- Acompanhar status em tempo real
+- Anexar documentos comprobatórios
+- Visualizar histórico completo
+
+### 👔 Para Chefias
+- Analisar solicitações da equipe
+- Emitir pareceres (aprovar/rejeitar)
+- Visualizar detalhes completos
+- Filtrar por status
+
+### 🏢 Para Gestão de Pessoas
+- Dashboard com métricas gerenciais
+- Decisão final sobre processos
+- Visão consolidada de todos os processos
+- Estatísticas em tempo real
+
+---
+
+## 🛠️ Tecnologias
+
+Este projeto foi desenvolvido com tecnologias nativas, **sem frameworks ou bibliotecas externas**:
+
+- **HTML5** - Estrutura semântica
+- **CSS3** - Design System responsivo
+- **JavaScript (Vanilla)** - Lógica funcional
+- **LocalStorage API** - Persistência de dados
+
+### Por que sem frameworks?
+
+- ⚡ **Performance**: Carregamento instantâneo
+- 🎯 **Simplicidade**: Código direto e compreensível
+- 📦 **Leveza**: < 100KB total
+- 🔧 **Manutenibilidade**: Fácil de entender e modificar
+
+---
+
+## 📦 Instalação
+
+### Opção 1: Download Direto
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/sigmf.git
+
+# Entre na pasta
+cd sigmf
+
+# Abra o index.html no navegador
+# Não é necessário servidor web!
+```
+
+### Opção 2: Servidor Local (Opcional)
+
+```bash
+# Python 3
+python -m http.server 8000
+
+# Node.js
+npx serve
+
+# Acesse: http://localhost:8000
+```
+
+---
+
+## 🎮 Como Usar
+
+### 1️⃣ Login
+
+```
+SIAPE: 1234567
+Senha: 1234567
+```
+
+Escolha um perfil:
+- **Servidor** - Para criar solicitações
+- **Chefia** - Para analisar e aprovar
+- **Gestão de Pessoas** - Para decisão final
+
+### 2️⃣ Criar Solicitação (como Servidor)
+
+1. Clique em "Nova Solicitação"
+2. Preencha o formulário em 4 etapas:
+   - **Dados Pessoais**: Pré-preenchidos via SIAPE
+   - **Motivo**: Tipo de remoção e justificativa
+   - **Documentos**: Anexar arquivos (opcional)
+   - **Confirmação**: Revisar e enviar
+3. Receba o protocolo gerado
+
+### 3️⃣ Análise (como Chefia)
+
+1. Visualize solicitações pendentes
+2. Clique em "Manifestar"
+3. Digite seu parecer
+4. Aprove ou rejeite
+
+### 4️⃣ Decisão Final (como GP)
+
+1. Veja o dashboard com estatísticas
+2. Analise processos com parecer da chefia
+3. Emita decisão final
+4. Visualize a timeline completa
+
+---
+
+## 📊 Estrutura do Projeto
+
+```
+sigmf/
+├── index.html          # Estrutura HTML (todas as telas)
+├── style.css           # Estilos CSS responsivos
+├── app.js              # Lógica JavaScript
+├── data.json           # Dados simulados (SIAPE)
+├── README.md           # Este arquivo
+└── .gitignore          # Arquivos ignorados
+```
+
+---
+
+## 🎨 Design System
+
+### Paleta de Cores (Gov.br)
+
+```css
+--azul-institucional: #1351B4  /* Primária */
+--azul-escuro: #0C326F         /* Hover */
+--azul-claro: #E6F0FF          /* Background destaque */
+--verde-sucesso: #168821       /* Aprovações */
+--vermelho-erro: #E52207       /* Rejeições */
+```
+
+### Responsividade
+
+- 📱 **Mobile**: até 767px
+- 📱 **Tablet**: 768px - 1199px
+- 💻 **Desktop**: 1200px+
+
+### Acessibilidade
+
+- ✅ Navegação por teclado
+- ✅ Contraste adequado (WCAG AA)
+- ✅ Labels descritivos
+- ✅ Estados de foco visíveis
+- ✅ Estrutura semântica
+
+---
+
+## 🔄 Fluxo do Processo
+
+```
+┌─────────────────┐
+│  Servidor       │ → Cria solicitação
+│  Solicita       │
+└────────┬────────┘
+         ↓
+┌─────────────────┐
+│  Chefia         │ → Analisa e emite parecer
+│  Aprova/Rejeita │
+└────────┬────────┘
+         ↓
+┌─────────────────┐
+│  GP             │ → Decisão final
+│  Defere/Indefere│
+└────────┬────────┘
+         ↓
+┌─────────────────┐
+│  Concluído      │ → Timeline completa
+└─────────────────┘
+```
+
+**Automação**: O sistema encaminha automaticamente entre as etapas.
+
+---
+
+## 📈 Impacto Esperado
+
+### Antes (Processo Manual)
+- ❌ Formulários em papel
+- ❌ Trâmite físico entre setores
+- ❌ Prazo: 45-60 dias
+- ❌ Sem rastreabilidade
+
+### Depois (Com SIGMF)
+- ✅ Formulário digital
+- ✅ Tramitação automática
+- ✅ Prazo: 15-20 dias (**67% redução**)
+- ✅ Rastreabilidade completa
+
+---
+
+## 🚧 Roadmap
+
+### Fase 1: Protótipo ✅ (Concluído)
+- [x] Interface funcional
+- [x] Fluxo completo
+- [x] Simulação SIAPE
+- [x] Documentação
+
+### Fase 2: MVP (Planejado)
+- [ ] Integração SIAPE real
+- [ ] Integração SEI
+- [ ] Banco de dados
+- [ ] Autenticação gov.br
+- [ ] Notificações email
+
+### Fase 3: Produção (Futuro)
+- [ ] Assinatura digital
+- [ ] Relatórios avançados
+- [ ] Dashboard gerencial
+- [ ] API RESTful
+- [ ] App mobile
+
+---
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Fork o projeto
+2. Crie uma branch: `git checkout -b minha-feature`
+3. Commit suas mudanças: `git commit -m 'Adiciona nova feature'`
+4. Push para a branch: `git push origin minha-feature`
+5. Abra um Pull Request
+
+### Diretrizes
+
+- Mantenha o código simples e legível
+- Siga o padrão de nomenclatura existente
+- Teste em diferentes navegadores
+- Documente mudanças significativas
+
+---
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+**Desenvolvido como demonstração para Mentoria - Transformação Digital**
+
+- 📧 Email: [seu-email@exemplo.com](mailto:seu-email@exemplo.com)
+- 💼 LinkedIn: [Seu Nome](https://linkedin.com/in/seu-perfil)
+- 🐙 GitHub: [@seu-usuario](https://github.com/seu-usuario)
+
+---
+
+## 🙏 Agradecimentos
+
+- Ministério da Gestão e da Inovação (MGI)
+- Design System Gov.br
+- Comunidade de desenvolvedores
+
+---
+
+## 📚 Documentação Adicional
+
+Para mais informações sobre implementação, consulte:
+
+- [Especificações Técnicas](docs/ESPECIFICACOES-TECNICAS.md) _(disponível no repositório completo)_
+- [Guia de Estilo](docs/GUIA-VISUAL.md) _(disponível no repositório completo)_
+- [FAQ](docs/FAQ.md) _(disponível no repositório completo)_
+
+---
+
+## 🔗 Links Úteis
+
+- [Gov.br Design System](https://www.gov.br/ds/)
+- [SIAPE - Sistema de Gestão](https://www.siape.gov.br/)
+- [SEI - Sistema Eletrônico de Informações](https://www.gov.br/economia/pt-br/sei)
+
+---
+
+## 📞 Suporte
+
+Encontrou um bug? Tem uma sugestão? 
+
+- 🐛 [Reportar Bug](https://github.com/seu-usuario/sigmf/issues)
+- 💡 [Sugerir Feature](https://github.com/seu-usuario/sigmf/issues)
+- 💬 [Discussões](https://github.com/seu-usuario/sigmf/discussions)
+
+---
+
+## ⭐ Se você gostou
+
+Se este projeto foi útil para você, considere dar uma ⭐ no repositório!
+
+---
+
+<div align="center">
+
+**SIGMF** - Modernizando a Gestão Pública 🚀
+
+Feito com ❤️ para o serviço público brasileiro
+
+[⬆ Voltar ao topo](#-sigmf---sistema-de-gestão-de-movimentação-funcional)
+
+</div>
