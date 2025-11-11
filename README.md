@@ -246,11 +246,11 @@ sigmf/
 
 ## 🚧 Roadmap
 
-### Fase 1: Protótipo ✅ (Concluído)
-- [x] Interface funcional
-- [x] Fluxo completo
-- [x] Simulação SIAPE
-- [x] Documentação
+### Fase 1: Protótipo
+- [ ] Interface funcional
+- [ ] Fluxo completo
+- [ ] Simulação SIAPE
+- [ ] Documentação
 
 ### Fase 2: MVP (Planejado)
 - [ ] Integração SIAPE real
@@ -266,91 +266,3 @@ sigmf/
 - [ ] API RESTful
 - [ ] App mobile
 
----
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Fork o projeto
-2. Crie uma branch: `git checkout -b minha-feature`
-3. Commit suas mudanças: `git commit -m 'Adiciona nova feature'`
-4. Push para a branch: `git push origin minha-feature`
-5. Abra um Pull Request
-
-### Diretrizes
-
-- Mantenha o código simples e legível
-- Siga o padrão de nomenclatura existente
-- Teste em diferentes navegadores
-- Documente mudanças significativas
-
----
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-## 👨‍💻 Autor
-
-**Desenvolvido como demonstração para Mentoria - Transformação Digital**
-
-- 📧 Email: [seu-email@exemplo.com](mailto:seu-email@exemplo.com)
-- 💼 LinkedIn: [Seu Nome](https://linkedin.com/in/seu-perfil)
-- 🐙 GitHub: [@seu-usuario](https://github.com/seu-usuario)
-
----
-
-## 🙏 Agradecimentos
-
-- Ministério da Gestão e da Inovação (MGI)
-- Design System Gov.br
-- Comunidade de desenvolvedores
-
----
-
-## 📚 Documentação Adicional
-
-Para mais informações sobre implementação, consulte:
-
-- [Especificações Técnicas](docs/ESPECIFICACOES-TECNICAS.md) _(disponível no repositório completo)_
-- [Guia de Estilo](docs/GUIA-VISUAL.md) _(disponível no repositório completo)_
-- [FAQ](docs/FAQ.md) _(disponível no repositório completo)_
-
----
-
-## 🔗 Links Úteis
-
-- [Gov.br Design System](https://www.gov.br/ds/)
-- [SIAPE - Sistema de Gestão](https://www.siape.gov.br/)
-- [SEI - Sistema Eletrônico de Informações](https://www.gov.br/economia/pt-br/sei)
-
----
-
-## 📞 Suporte
-
-Encontrou um bug? Tem uma sugestão? 
-
-- 🐛 [Reportar Bug](https://github.com/seu-usuario/sigmf/issues)
-- 💡 [Sugerir Feature](https://github.com/seu-usuario/sigmf/issues)
-- 💬 [Discussões](https://github.com/seu-usuario/sigmf/discussions)
-
----
-
-## ⭐ Se você gostou
-
-Se este projeto foi útil para você, considere dar uma ⭐ no repositório!
-
----
-
-<div align="center">
-
-**SIGMF** - Modernizando a Gestão Pública 🚀
-
-Feito com ❤️ para o serviço público brasileiro
-
-[⬆ Voltar ao topo](#-sigmf---sistema-de-gestão-de-movimentação-funcional)
-
-</div>
